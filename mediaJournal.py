@@ -31,6 +31,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 import csv
 
+def plot(keys,values,color,day):
+    pColor = str(color).lower()
+    figure = plt.figure(figsize=(8,3))
+    
+    plt.bar(keys,values,color=pColor,width=0.3)
+    plt.xlabel("MEDIA TYPES")
+    plt.ylabel("# OF HOURS")
+    plt.title(day)
+    plt.show()
 
 '''1'''
 file = open("MEDIAspreadsheet.csv")
@@ -60,8 +69,8 @@ for g in range(len(rows)):
 #Shows the frequency of each app per day
 dictionary = dict()
 for i in range(len(rows)):
-    dictionary[rows[i][0]] = {"SNAPCHAT":rows[i][1], "INSTAGRAM":rows[i][2], "YOUTUBE":rows[i][3], \
-                              "FACEBOOK":rows[i][4], "iMESSAGE":rows[i][5], "NETFLIX":rows[i][6]}
+    dictionary[rows[i][0]] = {"SNAPCHAT": float(rows[i][1]), "INSTAGRAM":float(rows[i][2]), "YOUTUBE":float(rows[i][3]), \
+                              "FACEBOOK":float(rows[i][4]), "iMESSAGE":float(rows[i][5]), "ONLINE ARTICLES":float(rows[i][6])}
 
 
 #regular dictionary to plot
@@ -90,8 +99,9 @@ for k in range(len(newRows)):
             dictionary2[items] += ( float(newRows[k][3]) )
         elif items == "iMESSAGE":
             dictionary2[items] += ( float(newRows[k][4]) )
-        elif items == "NETFLIX":
+        elif items == "ONLINE ARTICLES":
             dictionary2[items] += ( float(newRows[k][5]) )
+     
 
 
 for items in dictionary2:
@@ -104,15 +114,17 @@ apps = list(dictionary2.keys())
 values = list(dictionary2.values())
 
 print("#1")
+
 figure = plt.figure(figsize=(10,5))
 
 plt.bar(apps,values,color="blue",width=0.4)
-plt.xlabel("APPS")
+plt.xlabel("MEDIA TYPES")
 plt.ylabel("# OF HOURS")
 plt.title("SOCIAL MEDIA USAGE OVER PAST 3 DAYS (#1)")
 plt.show()
 
-print()
+
+print("-------------------------------------------------------------")
 
 '''2'''
 print("#2")
@@ -134,6 +146,7 @@ countL.append(ct1)
 countL.append(ct2)
 countL.append(ct3)
 
+
 figure2 = plt.figure(figsize=(10,5))
 
 plt.bar(weekdayL, countL, color = "red", width = 0.4)
@@ -141,3 +154,30 @@ plt.xlabel("DAYS")
 plt.ylabel("HOURS")
 plt.title("TOTAL PHONE USAGE (#2)")
 plt.show()
+
+
+print("-------------------------------------------------------------")
+'''3'''
+print("#3",end="\n\n")
+print("Sunday")
+SUNDAY = dictionary["SUNDAY"]
+sunKey = list(SUNDAY.keys())
+sunVal = list(SUNDAY.values())
+
+plot1 = plot(sunKey,sunVal,"cyan","SUNDAY")
+
+print()
+print("Monday")
+MONDAY = dictionary["MONDAY"]
+monKey = list(MONDAY.keys())
+monVal = list(MONDAY.values())
+
+plot2 = plot(monKey,monVal,"green","MONDAY")
+
+print()
+print("Tuesday")
+TUESDAY = dictionary["TUESDAY"]
+tueKey = list(TUESDAY.keys())
+tueVal = list(TUESDAY.values())
+
+plot3 = plot(tueKey,tueVal,"orange","TUESDAY")
