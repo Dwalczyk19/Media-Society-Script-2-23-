@@ -1,4 +1,4 @@
-# Media-Society-Script-2-23-
+# Media-Society-Script-2-23
 Using numpy, matplotlib, and importing csv files all in one. 
 
 Quick Analytical tools and beginner projects using bar plots. Want to expand to large 3+ dimensional arrays and vectors. 
