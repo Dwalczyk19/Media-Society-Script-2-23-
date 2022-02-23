@@ -18,7 +18,7 @@ showing average usage of 6 different social media services
 -YOUTUBE
 -FACEBOOK
 -iMESSAGE
--NETFLIX
+-ONLINE ARTICLES
 
 1. Create Average amount of time per day
 2. Total screen time per day (Subjective to the apps I selected)
